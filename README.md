@@ -81,6 +81,32 @@ but the recommended way is with npm run electron-dev
 ## GUIDELINES
 *Taken verbatim from freshworks-react boilerplate readme*
 
+#### Using Craco:
+craco provides build-time hooks into the webpack config without having to eject the react app.
+Previously, NPM packages that interact with the host directly (fs, childProcess, etc) were un-usable
+due to the pseudo 'containerization' of react. In essence, the react app has no knowledge of either the
+Electron container it is in, or Nodejs itself due to Electron's render process. Craco allows bridging the gap
+between React and Electron by setting a webpack config target. React can then interact with the Electron wrapper
+through the ipcRenderer->ipcMain event loop, which in turn can interact with Nodejs/host operating system from it's
+main process. This also allows access to the BrowserWindow object, allowing things such as window resizing,
+opening devTools, and other electron window related actions from within React.
+As a bonus, it now also supports ES6 syntax for importing electron within react! 
+```
+import Electron from 'electron';
+
+const BrowserWindow = Electron.BrowserWindow.remote.getCurrentWindow()
+const ipcRenderer = Electron.ipcRenderer
+```
+Previous workaround: (breaks some importing in other files, requiring both import and require statements in files)
+```
+const { Electron } = window.require('electron');
+```
+or
+```
+const { ipcRenderer } = window.require('electron').ipcRenderer;
+```
+
+
 #### Files/Components:
 
 - Consistent file naming scheme
