@@ -110,7 +110,7 @@ but the recommended way is with npm run electron-dev
 ---
 
 ## GUIDELINES
-*Taken verbatim from freshworks-react boilerplate readme*
+
 
 #### Using Craco:
 craco provides build-time hooks into the webpack config without having to eject the react app.
@@ -137,7 +137,7 @@ or
 const { ipcRenderer } = window.require('electron').ipcRenderer;
 ```
 
-
+*Taken verbatim from freshworks-react boilerplate readme*
 #### Files/Components:
 
 - Consistent file naming scheme
@@ -152,7 +152,7 @@ i.e. Nav.js -> ```class Nav extends Component {...}```
 
 - Organize imports in all files - modules at top, components below modules
 - Mixed/named imports first, default imports second
-- @/someAppRootLevelDir/someFile format
+- *@/someAppRootLevelDir/someFile* format
 - ./SomeFile for local files
 
 i.e. (in order) 
@@ -161,6 +161,7 @@ i.e. (in order)
 import React, { Component } from 'react';
 import { HashRouter } from 'react-router-dom';
 import thunk from 'redux-thunk';
+import { NonDefaultExport } from '@/components/SomeComponent';
 import * as Routes from '@/constants/routes';
 import Sidebar from './Sidebar';
 etc
