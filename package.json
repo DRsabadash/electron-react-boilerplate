@@ -32,6 +32,7 @@
     "start": "craco start",
     "electron": "electron .",
     "electron-dev": "cross-env NODE_ENV=development concurrently --kill-others  \"cross-env BROWSER=none npm start\" \"wait-on http://localhost:3000/ && electron .\"",
+    "electron-dev-tools": "cross-env NODE_ENV=developmentWithTools concurrently --kill-others  \"cross-env BROWSER=none npm start\" \"wait-on http://localhost:3000/ && electron .\"",
     "electron-build": "cross-env NODE_ENV=production concurrently \"npm run build && electron .\"",
     "electron-prod": "cross-env NODE_ENV=production electron .",
     "build": "craco build",

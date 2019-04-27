@@ -56,8 +56,15 @@ but the recommended way is with npm run electron-dev
 - *App is accessed from localhost:3000*
 - *used for electron development mode*
 - *browser window auto open is disabled, but can still be accessed through a browser manually unless craco.config.js is overriding webpack*
+- *using craco.config breaks browser development for some reason*
 - *Hot reloading is enabled*
 - *closing the electron window automatically shuts down the client server*
+
+`npm run electron-dev-tools`
+
+- *does all of the above*
+- *makes default window size a little larger, installs Redux-devtools, auto opens Developer tools, and composes the store with '__REDUX_DEVTOOLS_EXTENSION_COMPOSE__'*
+
 
 ##### Electron build:
 
@@ -78,7 +85,7 @@ but the recommended way is with npm run electron-dev
 
 ---
 
-### DEVELOPMENT
+### PRODUCTION
 
 #### App packaging:
 
@@ -88,7 +95,7 @@ but the recommended way is with npm run electron-dev
 - *creates executable for current host OS*
 - *package.json build:{} provides packaging args, asar controls dist source archiving*
 
-`npm run pack`
+`npm run dist`
 
 - *does all of the above*
 - *also provides an installer that moves app source to default host program directory*
