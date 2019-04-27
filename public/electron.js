@@ -27,12 +27,17 @@ function createWindow () {
     mainWindow.loadFile('./build/index.html')
   } else if (process.env.NODE_ENV === 'development') {
     mainWindow.loadURL('http://localhost:3000')
+  } else if (process.env.NODE_ENV === 'developmentWithTools') {
+    mainWindow.loadURL('http://localhost:3000')
   } else {
     mainWindow.loadFile('./build/index.html')
   }
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools()
+  if ( process.env.NODE_ENV === 'developmentWithTools') {
+    mainWindow.setSize(1200, 900)
+    mainWindow.webContents.openDevTools()
+  }
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
@@ -42,6 +47,17 @@ function createWindow () {
     mainWindow = null
   })
 }
+
+// This method will be called when Electron has finished
+// initialization. It will check to see if Redux Devtools
+// should be used for development
+app.on('ready', () => {
+  if (process.env.NODE_ENV === 'developmentWithTools') {
+    installExtension(REDUX_DEVTOOLS)
+      .then((name) => console.log(`Added Extension:  ${name}`))
+      .catch((err) => console.log('An error occurred: ', err));
+  }
+})
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
