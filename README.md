@@ -2,7 +2,7 @@
 
 #### About:
 
-This is the a boilerplate for creating electron applications, leveraging react, redux, and react-router.
+This is a boilerplate for creating electron applications, leveraging react, redux, and react-router.
 Everything is pre-configured to load off of a client server with live updating in development mode, or off of a static HTML file in production mode.
 This allows for easy distribution of a built application with a minified source, and optimized performance with no overhead of running a client server.
 
@@ -137,7 +137,6 @@ or
 const { ipcRenderer } = window.require('electron').ipcRenderer;
 ```
 
-*Taken verbatim from freshworks-react boilerplate readme*
 #### Files/Components:
 
 - Consistent file naming scheme
